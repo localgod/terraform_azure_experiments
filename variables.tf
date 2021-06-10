@@ -7,6 +7,14 @@ variable "SUBSCRIPTION_ID" {
   type = string
 }
 
+variable "CLIENT_ID" {
+  type = string
+}
+
+variable "CLIENT_SECRET" {
+  type = string
+}
+
 variable "resource_group" {
   type    = string
   default = "ahriman_main"
