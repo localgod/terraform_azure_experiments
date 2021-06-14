@@ -11,7 +11,7 @@ variable "SUBSCRIPTION_ID" {
 
 variable "CLIENT_ID" {
   type = string
-  description = "Azure Appid"
+  description = "Azure AppId"
 }
 
 variable "CLIENT_SECRET" {
@@ -19,32 +19,17 @@ variable "CLIENT_SECRET" {
   description = "Azure Client Secrect"
 }
 
+variable "ENVIRONMENT" {
+  type = string
+  description = "Environment (dev / stage / prod)"
+}
+
 variable "project" {
   type = string
   description = "Project name"
 }
 
-variable "environment" {
-  type = string
-  description = "Environment (dev / stage / prod)"
-}
-
-variable "resource_group" {
-  type    = string
-  description = "Resource group"
-}
-
 variable "resource_group_location" {
   type    = string
   description = "Resource group location"
-}
-
-variable "cosmos_db_account_name" {
-  type    = string
-  description = "Cosmos Database account name"
-}
-
-variable "failover_location" {
-  type    = string
-  description = "Cosmos Database Failover location"
 }

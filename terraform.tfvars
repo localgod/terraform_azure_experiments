@@ -1,6 +1,2 @@
-resource_group = "ahriman_main"
 resource_group_location = "northeurope"
-cosmos_db_account_name= "ahriman-cosmo"
-failover_location= "westeurope"
-project = "TAE"
-environment = "dev"
+project = "tae"
