@@ -1,9 +1,14 @@
 tasks:
   - init: |
-      wget https://releases.hashicorp.com/terraform/0.15.5/terraform_0.15.5_linux_amd64.zip
+      wget https://releases.hashicorp.com/terraform/1.0.0/terraform_1.0.0_linux_amd64.zip
       unzip terraform_0.15.5_linux_amd64.zip
       sudo mv terraform /usr/bin/terraform
       sudo chmod 755 /usr/bin/terraform
       rm terraform_0.15.5_linux_amd64.zip
+      curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+      sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+      sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
+      sudo apt-get update
+      sudo apt-get install azure-functions-core-tools-3
       curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
       terraform init
