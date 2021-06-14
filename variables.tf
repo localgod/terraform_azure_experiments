@@ -29,6 +29,11 @@ variable "project" {
   description = "Project name"
 }
 
+variable "uuid" {
+  type = string
+  description = "an4d6zgufraq6egi6ank"
+}
+
 variable "resource_group_location" {
   type    = string
   description = "Resource group location"
