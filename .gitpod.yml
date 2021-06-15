@@ -12,4 +12,6 @@ tasks:
       sudo apt-get install azure-functions-core-tools-3
       curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
       curl https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
+      cd ./terraform
       terraform init
+      cd ..
