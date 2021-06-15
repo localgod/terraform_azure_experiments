@@ -76,12 +76,12 @@ resource "azurerm_function_app" "function_app" {
   app_service_plan_id        = azurerm_app_service_plan.app_service_plan.id
   app_settings = {
     "WEBSITE_RUN_FROM_PACKAGE" = "",
-    "FUNCTIONS_WORKER_RUNTIME" = "node",
+    "FUNCTIONS_WORKER_RUNTIME" = "dotnet",
     "APPINSIGHTS_INSTRUMENTATIONKEY" = azurerm_application_insights.application_insights.instrumentation_key,
   }
   os_type = "linux"
   site_config {
-    linux_fx_version          = "node|14"
+    linux_fx_version          = "DOTNETCORE|3.1"
     use_32_bit_worker_process = false
   }
   storage_account_name       = azurerm_storage_account.sa.name
