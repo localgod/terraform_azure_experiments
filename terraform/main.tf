@@ -34,7 +34,6 @@ resource "azurerm_storage_account" "sa" {
   }
 }
 
-
 resource "azurerm_app_service_plan" "app_service_plan" {
   name = "service-plan-${var.uuid}"
   location = azurerm_resource_group.rg.location

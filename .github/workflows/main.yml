@@ -2,7 +2,7 @@ name: Main
 on:
   push:
     branches:
-      - master
+      - main
       - 'feature/**'
       - 'releases/**'
   pull_request:
