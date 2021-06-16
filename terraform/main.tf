@@ -5,6 +5,13 @@ terraform {
       version = "2.63.0"
     }
   }
+  backend "remote" {
+    organization = "mathmagicians"
+
+    workspaces {
+      name = "test"
+    }
+  }
 }
 
 provider "azurerm" {
