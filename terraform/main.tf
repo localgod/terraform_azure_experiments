@@ -23,9 +23,9 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name = "resource-group-${var.uuid}"
+  name     = "resource-group-${var.uuid}"
   location = var.resource_group_location
-  tags                = {
+  tags = {
     environment = var.ENVIRONMENT
   }
 }
@@ -36,21 +36,21 @@ resource "azurerm_storage_account" "sa" {
   location                 = azurerm_resource_group.rg.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
-  tags                = {
+  tags = {
     environment = var.ENVIRONMENT
   }
 }
 
 resource "azurerm_app_service_plan" "app_service_plan" {
-  name = "service-plan-${var.uuid}"
-  location = azurerm_resource_group.rg.location
+  name                = "service-plan-${var.uuid}"
+  location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
-  kind = "linux"
-  reserved = true  
+  kind                = "linux"
+  reserved            = true
   sku {
     tier = "Standard"
     size = "B1"
-  }  
+  }
   tags = {
     environment = var.ENVIRONMENT
   }
@@ -61,7 +61,7 @@ resource "azurerm_app_service" "apps" {
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   app_service_plan_id = azurerm_app_service_plan.app_service_plan.id
-  tags                = {
+  tags = {
     environment = var.ENVIRONMENT
   }
 }
@@ -71,19 +71,19 @@ resource "azurerm_application_insights" "application_insights" {
   location            = var.resource_group_location
   resource_group_name = azurerm_resource_group.rg.name
   application_type    = "Node.JS"
-  tags                = {
+  tags = {
     environment = var.ENVIRONMENT
   }
 }
 
 resource "azurerm_function_app" "function_app" {
-  name                       = "function-app-${var.uuid}"
-  resource_group_name        = azurerm_resource_group.rg.name
-  location                   = var.resource_group_location
-  app_service_plan_id        = azurerm_app_service_plan.app_service_plan.id
+  name                = "function-app-${var.uuid}"
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = var.resource_group_location
+  app_service_plan_id = azurerm_app_service_plan.app_service_plan.id
   app_settings = {
-    "WEBSITE_RUN_FROM_PACKAGE" = "",
-    "FUNCTIONS_WORKER_RUNTIME" = "dotnet",
+    "WEBSITE_RUN_FROM_PACKAGE"       = "",
+    "FUNCTIONS_WORKER_RUNTIME"       = "dotnet",
     "APPINSIGHTS_INSTRUMENTATIONKEY" = azurerm_application_insights.application_insights.instrumentation_key,
   }
   os_type = "linux"
@@ -101,7 +101,7 @@ resource "azurerm_function_app" "function_app" {
     ]
   }
 
-  tags                = {
+  tags = {
     environment = var.ENVIRONMENT
   }
 }
