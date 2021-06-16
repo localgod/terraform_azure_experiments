@@ -10,7 +10,7 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    name: Lint
+    name: lint
     steps:
     - uses: actions/checkout@v2
     - uses: terraform-linters/setup-tflint@v1
@@ -18,7 +18,7 @@ jobs:
       run: tflint -f compact ./terraform   
   provision:
     runs-on: ubuntu-latest
-    name: Provision
+    name: provision
     steps:
     - uses: actions/checkout@v2
     - name: HashiCorp - Setup Terraform
@@ -43,12 +43,22 @@ jobs:
       run: terraform plan -no-color
   build:
     runs-on: ubuntu-latest
-    name: Provision
+    name: build
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '3.1.x'
+  deploy:
+    runs-on: ubuntu-latest
+    name: Provision
+    needs: build
+    steps:
+    - name: Azure Login
+      uses: Azure/login@v1
+      with:
+        creds: ${{ secrets. }}
+
 ##    - name: Azure Functions Action
 ##      uses: Azure/functions-action@v1.4.0
 ##      with:
