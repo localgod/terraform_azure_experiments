@@ -16,3 +16,13 @@ jobs:
     - uses: terraform-linters/setup-tflint@v1
     - name: Tflint
       run: tflint -f compact ./terraform
+    - name: terraform
+      run: terrafrom --version
+    - name: az
+      run: az --version
+    - name: func
+      run: func --version
+    - name: dotnet
+      run: dotnet --list-sdks
+      
+
