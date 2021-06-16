@@ -19,7 +19,7 @@ func new --name hello-world --template "HTTP trigger" --authlevel "anonymous"
 
 ```bash
 cd ./example
-func azure functionapp publish function-app-e3bf2njz1skn2aeqr0av # function-app-e3bf2njz1skn2aeqr0av is the app name
+func azure functionapp publish function-app-e3bf2njz1skn2aeqr0va # function-app-e3bf2njz1skn2aeqr0av is the app name
 ```
 
 ## Example
