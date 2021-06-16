@@ -51,7 +51,7 @@ jobs:
         dotnet-version: '3.1.x'
   deploy:
     runs-on: ubuntu-latest
-    name: Provision
+    name: deploy
     needs: build
     steps:
     - name: Azure Login
