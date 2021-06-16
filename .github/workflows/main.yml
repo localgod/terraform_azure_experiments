@@ -9,7 +9,7 @@ on:
     branches: [ master ]
 jobs:
   lint:
-    if: ${{ false }}  # disable for now
+    #if: ${{ false }}  # disable for now
     runs-on: ubuntu-latest
     name: lint
     steps:
@@ -18,7 +18,7 @@ jobs:
     - name: Tflint
       run: tflint -f compact ./terraform   
   provision:
-    if: ${{ false }}  # disable for now
+    #if: ${{ false }}  # disable for now
     runs-on: ubuntu-latest
     name: provision
     needs: lint
@@ -44,19 +44,10 @@ jobs:
       id: plan
       working-directory: ./terraform
       run: terraform plan -no-color
-  build:
-    if: ${{ false }}  # disable for now
-    runs-on: ubuntu-latest
-    name: build
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '3.1.x'
   deploy:
     runs-on: ubuntu-latest
     name: deploy
-    #needs: [provision, build]
+    needs: provision
     steps:
     - uses: actions/checkout@v2
     - name: Azure Login
