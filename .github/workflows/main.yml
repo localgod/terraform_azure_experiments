@@ -56,7 +56,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     name: deploy
-    needs: [provision, build]
+    #needs: [provision, build]
     steps:
     - name: Azure Login
       uses: Azure/login@v1
