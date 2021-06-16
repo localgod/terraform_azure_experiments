@@ -42,24 +42,23 @@ jobs:
       id: plan
       working-directory: ./terraform
       run: terraform plan -no-color
-#  build:
-#    runs-on: ubuntu-latest
-#    name: build
-#    steps:
-#    - uses: actions/checkout@v2
-#    - uses: actions/setup-dotnet@v1
-#      with:
-#        dotnet-version: '3.1.x'
-#  deploy:
-#    runs-on: ubuntu-latest
-#    name: deploy
-#    needs: build
-#    steps:
-#    - name: Azure Login
-#      uses: Azure/login@v1
-#      with:
-#        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
+  build:
+    runs-on: ubuntu-latest
+    name: build
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '3.1.x'
+  deploy:
+    runs-on: ubuntu-latest
+    name: deploy
+    needs: [provision, build]
+    steps:
+    - name: Azure Login
+      uses: Azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
 ##    - name: Azure Functions Action
 ##      uses: Azure/functions-action@v1.4.0
 ##      with:
