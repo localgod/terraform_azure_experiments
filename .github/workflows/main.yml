@@ -63,7 +63,7 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Azure Functions Action
-      working-directory: ./terraform
       uses: Azure/functions-action@v1.4.0
       with:
         app-name: function-app-e3bf2njz1skn2aeqr0av
+        package: ./example
