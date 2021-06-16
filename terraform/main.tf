@@ -70,7 +70,7 @@ resource "azurerm_application_insights" "application_insights" {
   name                = "application-insights-${var.uuid}"
   location            = var.resource_group_location
   resource_group_name = azurerm_resource_group.rg.name
-  application_type    = "Node.JS"
+  application_type    = "other"
   tags = {
     environment = var.ENVIRONMENT
   }

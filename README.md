@@ -25,5 +25,5 @@ func azure functionapp publish function-app-e3bf2njz1skn2aeqr0av # function-app-
 ## Example
 
 ```bash
-curl -v http://function-app-e3bf2njz1skn2aeqr0av.azurewebsites.net/api/hello_world?name=Terraform
+curl -v http://function-app-e3bf2njz1skn2aeqr0va.azurewebsites.net/api/hello_world?name=Terraform
 ```
