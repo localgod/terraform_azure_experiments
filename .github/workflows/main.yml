@@ -58,6 +58,7 @@ jobs:
     name: deploy
     #needs: [provision, build]
     steps:
+    - uses: actions/checkout@v2
     - name: Azure Login
       uses: Azure/login@v1
       with:
