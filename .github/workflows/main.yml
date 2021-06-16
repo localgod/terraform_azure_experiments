@@ -21,21 +21,21 @@ jobs:
     - uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '3.1.x'
-#    - name: Azure Functions Action
-#      uses: Azure/functions-action@v1.4.0
-#      with:
-#        app-name: jonny
+##    - name: Azure Functions Action
+##      uses: Azure/functions-action@v1.4.0
+##      with:
+##        app-name: jonny
        
         
-    - name: Tflint
-      run: tflint -f compact ./terraform
+#    - name: Tflint
+#      run: tflint -f compact ./terraform
     - name: terraform
-      run: terraform --version
-    - name: az
-      run: az --version
-#    - name: func
-#      run: func --version
-    - name: dotnet
-      run: dotnet --list-sdks
+      run: terraform plan
+#    - name: az
+#      run: az --version
+##    - name: func
+##      run: func --version
+#    - name: dotnet
+#      run: dotnet --list-sdks
       
 
