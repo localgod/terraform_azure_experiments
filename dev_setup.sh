@@ -18,3 +18,4 @@ rm packages-microsoft-prod.deb
 cd ./terraform
 terraform init -backend-config="token=${TF_API_TOKEN}"
 cd ..
+az login --service-principal -u ${TF_VAR_CLIENT_ID} -p ${TF_VAR_CLIENT_SECRET} --tenant ${TF_VAR_TENANT_ID}
