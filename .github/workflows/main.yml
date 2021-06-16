@@ -9,6 +9,7 @@ on:
     branches: [ master ]
 jobs:
   lint:
+    if: ${{ false }}  # disable for now
     runs-on: ubuntu-latest
     name: lint
     steps:
@@ -17,6 +18,7 @@ jobs:
     - name: Tflint
       run: tflint -f compact ./terraform   
   provision:
+    if: ${{ false }}  # disable for now
     runs-on: ubuntu-latest
     name: provision
     needs: lint
@@ -43,6 +45,7 @@ jobs:
       working-directory: ./terraform
       run: terraform plan -no-color
   build:
+    if: ${{ false }}  # disable for now
     runs-on: ubuntu-latest
     name: build
     steps:
@@ -59,15 +62,7 @@ jobs:
       uses: Azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-##    - name: Azure Functions Action
-##      uses: Azure/functions-action@v1.4.0
-##      with:
-##        app-name: function-app-e3bf2njz1skn2aeqr0av
-#    - name: az
-#      run: az --version
-##    - name: func
-##      run: func --version
-#    - name: dotnet
-#      run: dotnet --list-sdks
-      
-
+    - name: Azure Functions Action
+      uses: Azure/functions-action@v1.4.0
+      with:
+        app-name: function-app-e3bf2njz1skn2aeqr0av
