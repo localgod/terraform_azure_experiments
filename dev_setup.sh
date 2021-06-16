@@ -16,5 +16,5 @@ sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update;   sudo apt-get install -y apt-transport-https &&   sudo apt-get update &&   sudo apt-get install -y dotnet-sdk-3.1
 rm packages-microsoft-prod.deb
 cd ./terraform
-terraform init
+terraform init -backend-config="token=${TF_API_TOKEN}"
 cd ..

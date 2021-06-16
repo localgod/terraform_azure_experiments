@@ -9,7 +9,7 @@ terraform {
     organization = "mathmagicians"
 
     workspaces {
-      name = "ws-s6HWYsxMWhLWg8rj"
+      name = "terraform_azure_experiments"
     }
   }
 }
