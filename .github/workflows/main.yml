@@ -18,9 +18,15 @@ jobs:
       uses: hashicorp/setup-terraform@v1.2.1
       with:
         cli_config_credentials_token:  ${{ secrets.TERRAFORM_IO_TOKEN }}
-    - uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '3.1.x'
+    - name: Terraform Format
+      id: fmt
+      run: terraform fmt -check
+    - name: Terraform Init
+      id: init
+      run: terraform init
+#    - uses: actions/setup-dotnet@v1
+#      with:
+#        dotnet-version: '3.1.x'
 ##    - name: Azure Functions Action
 ##      uses: Azure/functions-action@v1.4.0
 ##      with:
@@ -29,8 +35,8 @@ jobs:
         
 #    - name: Tflint
 #      run: tflint -f compact ./terraform
-    - name: terraform
-      run: cd ./terraform && terraform plan
+#    - name: terraform
+#      run: cd ./terraform && terraform plan
 #    - name: az
 #      run: az --version
 ##    - name: func
