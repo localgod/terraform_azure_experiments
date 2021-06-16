@@ -30,7 +30,7 @@ jobs:
 #    - name: Tflint
 #      run: tflint -f compact ./terraform
     - name: terraform
-      run: terraform plan
+      run: cd ./terraform && terraform plan
 #    - name: az
 #      run: az --version
 ##    - name: func
