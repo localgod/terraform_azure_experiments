@@ -21,7 +21,7 @@ jobs:
     - name: Tflint
       run: tflint -f compact ./terraform
     - name: terraform
-      run: terrafrom --version
+      run: terraform --version
     - name: az
       run: az --version
     - name: func
