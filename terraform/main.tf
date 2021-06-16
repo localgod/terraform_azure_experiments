@@ -9,7 +9,8 @@ terraform {
     organization = "mathmagicians"
 
     workspaces {
-      name = "terraform_azure_experiments"
+      #name = "terraform_azure_experiments" #var.ENVIRONMENT
+      name = "${var.project}-${var.ENVIRONMENT}"
     }
   }
 }
