@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+CWD=`pwd`
 export TF_CLI_VERSION=1.0.0
 wget https://releases.hashicorp.com/terraform/${TF_CLI_VERSION}/terraform_${TF_CLI_VERSION}_linux_amd64.zip
 sudo unzip -o terraform_${TF_CLI_VERSION}_linux_amd64.zip -d /usr/bin/
@@ -15,7 +16,8 @@ wget https://packages.microsoft.com/config/ubuntu/21.04/packages-microsoft-prod.
 sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update;   sudo apt-get install -y apt-transport-https &&   sudo apt-get update &&   sudo apt-get install -y dotnet-sdk-3.1
 rm packages-microsoft-prod.deb
-cd ./terraform
-terraform init -backend-config="token=${TF_API_TOKEN}"
-cd ..
-az login --service-principal -u ${TF_VAR_CLIENT_ID} -p ${TF_VAR_CLIENT_SECRET} --tenant ${TF_VAR_TENANT_ID}
+cd ~
+git clone https://github.com/hashicorp-community/tf-helper.git
+cd tf-helper/tfh/bin/
+sudo ln -s $PWD/tfh /usr/local/bin/tfh
+cd ${CWD}

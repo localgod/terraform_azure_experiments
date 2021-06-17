@@ -2,6 +2,12 @@
 
 # Terraform Azure Experiments
 
+## Set workspace to prod
+
+```bash
+$ terraform workspace select prod
+```
+
 ## Add new function app
 
 ```bash

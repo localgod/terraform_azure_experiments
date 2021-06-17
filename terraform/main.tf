@@ -9,7 +9,7 @@ terraform {
     organization = "mathmagicians"
 
     workspaces {
-      name = "terraform_azure_experiments"
+      prefix = "tae-"
     }
   }
 }
@@ -26,7 +26,7 @@ resource "azurerm_resource_group" "rg" {
   name     = "resource-group-${var.uuid}"
   location = var.resource_group_location
   tags = {
-    environment = var.ENVIRONMENT
+    environment = var.environment
   }
 }
 
@@ -37,7 +37,7 @@ resource "azurerm_storage_account" "sa" {
   account_tier             = "Standard"
   account_replication_type = "LRS"
   tags = {
-    environment = var.ENVIRONMENT
+    environment = var.environment
   }
 }
 
@@ -52,7 +52,7 @@ resource "azurerm_app_service_plan" "app_service_plan" {
     size = "B1"
   }
   tags = {
-    environment = var.ENVIRONMENT
+    environment = var.environment
   }
 }
 
@@ -62,7 +62,7 @@ resource "azurerm_app_service" "apps" {
   resource_group_name = azurerm_resource_group.rg.name
   app_service_plan_id = azurerm_app_service_plan.app_service_plan.id
   tags = {
-    environment = var.ENVIRONMENT
+    environment = var.environment
   }
 }
 
@@ -72,7 +72,7 @@ resource "azurerm_application_insights" "application_insights" {
   resource_group_name = azurerm_resource_group.rg.name
   application_type    = "other"
   tags = {
-    environment = var.ENVIRONMENT
+    environment = var.environment
   }
 }
 
@@ -90,6 +90,7 @@ resource "azurerm_function_app" "function_app" {
   site_config {
     linux_fx_version          = "DOTNETCORE|3.1"
     use_32_bit_worker_process = false
+    always_on                  = true
   }
   storage_account_name       = azurerm_storage_account.sa.name
   storage_account_access_key = azurerm_storage_account.sa.primary_access_key
@@ -102,7 +103,7 @@ resource "azurerm_function_app" "function_app" {
   }
 
   tags = {
-    environment = var.ENVIRONMENT
+    environment = var.environment
   }
 }
 

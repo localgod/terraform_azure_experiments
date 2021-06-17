@@ -16,22 +16,17 @@ variable "CLIENT_ID" {
 
 variable "CLIENT_SECRET" {
   type        = string
-  description = "Azure Client Secrect"
+  description = "Azure Client Secret"
 }
 
-variable "ENVIRONMENT" {
+variable "environment" {
   type        = string
   description = "Environment (dev / stage / prod)"
 }
 
-variable "project" {
-  type        = string
-  description = "Project name"
-}
-
 variable "uuid" {
   type        = string
-  description = "an4d6zgufraq6egi6ank"
+  description = "UUID for resources created by terraform"
 }
 
 variable "resource_group_location" {
