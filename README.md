@@ -8,6 +8,12 @@
 $ terraform workspace select prod
 ```
 
+## Set workspace to dev
+
+```bash
+$ terraform workspace select dev
+```
+
 ## Add new function app
 
 ```bash

@@ -16,7 +16,7 @@ setup_prod_workspace:
 	@tfh pushvars -senv-var TF_VAR_CLIENT_SECRET=${TF_VAR_CLIENT_SECRET}     -token ${TF_API_TOKEN} -org ${ORG} -name tae-prod
 setup_dev_workspace:
 	@tfh pushvars -var resource_group_location=northeurope                   -token ${TF_API_TOKEN} -org ${ORG} -name tae-dev
-	@tfh pushvars -var uuid=e3bf2njz1skn2aeqr0av                             -token ${TF_API_TOKEN} -org ${ORG} -name tae-dev
+	@tfh pushvars -var uuid=e3bf2njz1skn2aeqrdev                             -token ${TF_API_TOKEN} -org ${ORG} -name tae-dev
 	@tfh pushvars -var environment=dev                                       -token ${TF_API_TOKEN} -org ${ORG} -name tae-dev
 	@tfh pushvars -senv-var TF_VAR_TENANT_ID=${TF_VAR_TENANT_ID}             -token ${TF_API_TOKEN} -org ${ORG} -name tae-dev
 	@tfh pushvars -senv-var TF_VAR_SUBSCRIPTION_ID=${TF_VAR_SUBSCRIPTION_ID} -token ${TF_API_TOKEN} -org ${ORG} -name tae-dev
