@@ -87,10 +87,12 @@ resource "azurerm_function_app" "function_app" {
     "APPINSIGHTS_INSTRUMENTATIONKEY" = azurerm_application_insights.application_insights.instrumentation_key,
   }
   os_type = "linux"
+  https_only = true
   site_config {
     linux_fx_version          = "DOTNETCORE|3.1"
     use_32_bit_worker_process = false
     always_on                 = true
+    ftps_state                = "Disabled"
   }
   storage_account_name       = azurerm_storage_account.sa.name
   storage_account_access_key = azurerm_storage_account.sa.primary_access_key
